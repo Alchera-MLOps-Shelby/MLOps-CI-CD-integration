@@ -18,11 +18,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Hyperparameter Tuning
-        run: |
-          python hypertune.py
+          pip install -r requirements.txt 
 
       - name: Copy Project Files
         run: |
@@ -32,4 +28,9 @@ jobs:
 
       - name: Run Tests
         run: |
+          cd code/
           python tests.py
+
+      - name: Hyperparameter Tuning
+        run: |
+          python hypertune.py
