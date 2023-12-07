@@ -22,7 +22,9 @@ jobs:
 
       - name: Copy Project Files
         run: |
-          cp -r $GITHUB_WORKSPACE/* .
+          mkdir my_mlflow_project  # Create a target directory
+          cp -r $GITHUB_WORKSPACE/* my_mlflow_project/
+          cd my_mlflow_project/
 
       - name: Run Tests
         run: |
