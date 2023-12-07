@@ -19,15 +19,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install mlflow
+
+      - name: Hyperparameter Tuning
+        run: |
+          python hypertune.py
 
       - name: Copy Project Files
         run: |
-          mkdir my_mlflow_project  # Create a target directory
+          mkdir my_mlflow_project
           cp -r $GITHUB_WORKSPACE/code $GITHUB_WORKSPACE/mlflow $GITHUB_WORKSPACE/requirements.txt my_mlflow_project/
           cd my_mlflow_project/
 
       - name: Run Tests
         run: |
-          cd code/
           python tests.py
