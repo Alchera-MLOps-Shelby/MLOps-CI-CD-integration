@@ -34,4 +34,5 @@ jobs:
 
       - name: Hyperparameter Tuning
         run: |
+          cd code/
           python hypertune.py
