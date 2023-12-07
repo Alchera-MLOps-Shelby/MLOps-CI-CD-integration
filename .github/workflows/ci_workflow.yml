@@ -23,11 +23,10 @@ jobs:
       - name: Copy Project Files
         run: |
           mkdir my_mlflow_project  # Create a target directory
-          shopt -s dotglob  # Include hidden files (starting with dot)
-          cp -r $GITHUB_WORKSPACE/* my_mlflow_project/
-          shopt -u dotglob  # Disable dotglob to avoid copying '.' and '..'
+          cp -r $GITHUB_WORKSPACE/code $GITHUB_WORKSPACE/mlflow $GITHUB_WORKSPACE/requirements.txt my_mlflow_project/
           cd my_mlflow_project/
 
       - name: Run Tests
         run: |
-          python code/tests.py
+          cd code/
+          python tests.py
